@@ -4,8 +4,6 @@ import bcrypt from "bcryptjs"
 
 import { sendVericationEmail } from "@/helpers/sendVerificationEmail";
 
-sendVericationEmail
-
 export async function Post(request: Request) {
     //    await dbConnect()
 
@@ -26,7 +24,18 @@ export async function Post(request: Request) {
         const verifyCode = Math.floor(100000 + Math.random() * 90000).toString()
 
         if (existingUserByEmail) {
-            true //todo back here
+            if(existingUserByEmail.isVarified){
+              return Response.json({
+                success: true,
+              message: "User already exist with this email "
+              }, {status: 400})
+            } else{
+                const hasedPassword = await bcrypt.hash(password, 10)
+                existingUserByEmail.password= hasedPassword;
+                existingUserByEmail.verifyCode= verifyCode;
+                existingUserByEmail.verifyCodeExpiry= new Date(Date.now() + 3600000)
+                await existingUserByEmail.save()
+            }
         } else {
             const hasedPassword = await bcrypt.hash(password, 10)
             const expiryDate = new Date()
@@ -56,6 +65,10 @@ export async function Post(request: Request) {
                   message: emailResponce.message
             }, {status: 500})
         }
+        return Response.json({
+            success: true,
+            message: "User registered sucessfully. please verify your email"
+        }, {status: 201})
     } catch (error) {
         console.log('Error registering user', error)
         return Response.json(
