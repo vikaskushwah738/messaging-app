@@ -15,12 +15,12 @@ const MessageSchema: Schema<Message> =new Schema({
     }
 })
 export interface User extends Document {
-    username: string;
+    username: string; 
     email: string;
     password: string;
     verifyCode: string;
     verifyCodeExpiry: Date;
-    isVarified:boolean;
+    isVerified:boolean;
     isAcceptingMessage: boolean;
     messages: Message[]
 }
@@ -49,7 +49,7 @@ const UserSchema: Schema<User> =new Schema({
         type: Date,
         required: [true, "Verify code Expiry is required"],
     },
-    isVarified:{
+    isVerified:{
         type:Boolean,
         default:false,
     },
