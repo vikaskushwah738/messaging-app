@@ -4,9 +4,8 @@ import UserModel from "@/models/User";
 import bcrypt from "bcryptjs";
 
 export async function Post(request: Request) {
-        
+    await dbConnect();
     try {
-        await dbConnect();
         const { username, email, password } = await request.json();
         const existingUserVerificationByUsername = await UserModel.findOne({
             username,
