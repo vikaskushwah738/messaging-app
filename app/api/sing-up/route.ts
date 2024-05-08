@@ -3,7 +3,7 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import bcrypt from "bcryptjs";
 
-export async function Post(request: Request) {
+export async function POST(request: Request) {
     await dbConnect();
     try {
         const { username, email, password } = await request.json();
@@ -57,6 +57,7 @@ export async function Post(request: Request) {
                 messages: []
             });
             await newUser.save();
+            console.log(newUser)
         }
 
         // send verification email

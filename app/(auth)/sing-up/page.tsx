@@ -19,7 +19,7 @@ const page = () => {
   const [usernameMessage, setUsernameMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isCheckingUsername, setIsCheckingUsername] = useState(false)
-  const debounced = useDebounceCallback(setUsername, 300)
+  const debounced = useDebounceCallback(setUsername, 400)
   const { toast } = useToast()
   const router = useRouter()
 
@@ -39,7 +39,8 @@ const page = () => {
         setUsernameMessage('')
         try {
           const responce = await axios.get(`/api/check-username-uniqe?username=${username}`)
-          console.log(responce)
+        //  console.log(responce)
+        //   let message = responce.data.message
           setUsernameMessage(responce.data.message)
         } catch (error) {
           const axiosError = error as AxiosError<ApiResponce>
@@ -59,7 +60,7 @@ const page = () => {
     try {
       const response = await axios.post<ApiResponce>('/api/sing-up', data)
       toast({
-        title: 'Sucess',
+        title:'Sucess',
         description: response.data.message
       })
       router.replace(`/verify/${username}`)
@@ -108,6 +109,7 @@ const page = () => {
                     />
                   </FormControl>
                   {isCheckingUsername && <Loader2 className="animate-spin"/>}
+                  <p className={`text-sm ${usernameMessage === "Username is unique" ? 'text-green-500' : 'text-red-600'}`}>text {usernameMessage}</p>
                   <FormMessage />
                 </FormItem>
               )}
