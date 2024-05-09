@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import { useDebounceValue, useDebounceCallback  } from 'usehooks-ts'
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
-import { singnUpSchema } from "@/schemas/singUpSchema"
+import { singUpSchema } from "@/schemas/singUpSchema"
 import axios, { Axios, AxiosError } from 'axios'
 import { ApiResponce } from "@/types/apiResponce"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -24,8 +24,8 @@ const Singup = () => {
   const router = useRouter()
 
   //zod Implementation
-  const form = useForm<z.infer<typeof singnUpSchema>>({
-    resolver: zodResolver(singnUpSchema),
+  const form = useForm<z.infer<typeof singUpSchema>>({
+    resolver: zodResolver(singUpSchema),
     defaultValues: {
       username: '',
       email: '',
@@ -55,7 +55,7 @@ const Singup = () => {
     checkUsernameUnique()
   }, [username])
 
-  const onSubmit:any = async (data: z.infer<typeof singnUpSchema>) => {
+  const onSubmit:any = async (data: z.infer<typeof singUpSchema>) => {
     setIsSubmitting(true)
     try {
       const response = await axios.post<ApiResponce>('/api/sing-up', data)
