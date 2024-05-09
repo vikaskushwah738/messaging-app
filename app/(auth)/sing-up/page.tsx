@@ -1,7 +1,7 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import * as z  from "zod"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useDebounceValue, useDebounceCallback  } from 'usehooks-ts'
@@ -14,7 +14,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
-const page = () => {
+const Singup = () => {
   const [username, setUsername] = useState('')
   const [usernameMessage, setUsernameMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -177,4 +177,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Singup
