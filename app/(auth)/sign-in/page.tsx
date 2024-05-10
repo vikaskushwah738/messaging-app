@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { singInSchema } from "@/schemas/singInSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
+import Link from "next/link"
 import { redirect, useRouter } from "next/navigation"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -79,10 +80,17 @@ const Singin = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Signin</Button>
+            <Button type="submit">Sign-in</Button>
           </form>
         </Form>
-
+        <div className="text-center mt-4">
+          <p>If you new member? {''}
+            <Link href="/sign-up" className="text-blue-600
+         hover:text-blue-800">
+              Sing up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   )

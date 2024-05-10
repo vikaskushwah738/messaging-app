@@ -151,6 +151,7 @@ const Singup = () => {
             <div className="flex justify-center">
               <Button
                 type="submit"
+              
                 disabled={isSubmitting}>
                 {
                   isSubmitting ? (
@@ -158,7 +159,7 @@ const Singup = () => {
                       <Loader2 className="mr-2 h-4 w-4 animate-spin"
                       /> Please wait
                     </>
-                  ) : ('SingUp')
+                  ) : ('Sing-Up')
                 }
               </Button>
             </div>
@@ -166,7 +167,7 @@ const Singup = () => {
         </Form>
         <div className="text-center mt-4">
           <p>Aready a member? {''}
-            <Link href="/sing-in" className="text-blue-600
+            <Link href="/sign-in" className="text-blue-600
          hover:text-blue-800">
               Sing in
             </Link>
