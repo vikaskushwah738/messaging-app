@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Message from USA",
+        "content": "Hey, how are you today",
+        "received": "10 minutes ago"
+    },
+    {
+        "title": "Message from USA",
+        "content": "Hey, how are you today",
+        "received": "10 minutes ago"
+    },
+    {
+        "title": "Message from india",
+        "content": "Hey, how are you today",
+        "received": "2 hours ago"
+    },
+    {
+        "title": "Message from chaina",
+        "content": "Hey, how are you today",
+        "received": "1 hours ago"
+    }
+]
