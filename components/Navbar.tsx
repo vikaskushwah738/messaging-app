@@ -5,7 +5,6 @@ import {User} from 'next-auth'
 import {useSession, signOut} from 'next-auth/react'
 import { Button } from './ui/button'
 
-
 const Navbar = () => {
   const {data: session} = useSession();
   const user: User = session?.user as User
